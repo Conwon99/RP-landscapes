@@ -1,0 +1,227 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import LazyImage from "@/components/LazyImage";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { trackPhoneCall, trackMessenger, trackQuoteRequest, trackFormInteraction } from "@/utils/analytics";
+
+const Hero = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+  const { toast } = useToast();
+
+  const serviceOptions = [
+    'Groundworks',
+    'Monoblocking', 
+    'Artificial Grass',
+    'Brickwork',
+    'Fencing',
+    'Decking',
+    'General Landscaping',
+    'Site Preparation'
+  ];
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xgvljren', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          service: formData.service,
+          message: formData.message,
+          _subject: 'Free Quote Request from Website'
+        }),
+      });
+
+      if (response.ok) {
+        // Track successful form submission
+        trackQuoteRequest('contact_form', [formData.service]);
+        trackFormInteraction('quote_form', 'submit_success');
+        
+        toast({
+          title: "Quote request sent!",
+          description: "Thank you for your request. We'll respond within 24 hours.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      trackFormInteraction('quote_form', 'submit_error');
+      toast({
+        title: "Error sending request",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleCallClick = () => {
+    trackPhoneCall('hero_section');
+    window.location.href = "tel:+447305967999";
+  };
+
+  const handleMessengerClick = () => {
+    trackMessenger('hero_section');
+    window.open("https://wa.me/447305967999", "_blank");
+  };
+
+  return (
+    <section id="hero" className="relative bg-background min-h-screen flex items-center py-20 px-4 pt-32 overflow-hidden w-full">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <LazyImage
+          src="/fencing1.jpg"
+          alt="Professional fencing installation Glasgow - expert fencing contractors"
+          className="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-black/50"></div>
+      </div>
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Text Content */}
+          <div className="text-left space-y-8">
+            <div className="space-y-6">
+              
+              <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg">
+                <span className="relative inline-block text-white">
+                  Professional
+                  <img 
+                    src="/undelrine svg1.svg" 
+                    alt="" 
+                    className="absolute top-1/2 left-0 w-full h-16 md:h-20 lg:h-24 object-contain -z-10 max-w-full"
+                  />
+                </span> Groundworks & Landscaping
+              </h1>
+              <h2 className="font-display font-bold text-2xl lg:text-3xl text-white drop-shadow-lg flex items-center gap-3">
+                <MapPin className="w-6 h-6" />
+                Glasgow & Ayrshire
+              </h2>
+              
+              <p className="text-lg text-white/90 font-medium max-w-lg leading-relaxed drop-shadow-md">
+                Expert groundworks and landscaping specialists serving Glasgow & Ayrshire. Professional monoblocking, artificial grass installation, brickwork, fencing, decking and complete groundworks services. Trusted builders delivering premium outdoor solutions
+              </p>
+            </div>
+
+
+
+            {/* Quick Contact */}
+            <div className="pt-4 border-t border-white/20">
+              <p className="text-white text-lg font-semibold mb-3">Give us a call or a Whatsapp for a free quote</p>
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
+              <Button 
+                onClick={handleMessengerClick}
+                className="inline-flex items-center justify-center gap-3 px-10 py-8 bg-green-600 hover:bg-green-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-lg"
+              >
+                <WhatsAppIcon className="w-8 h-8" />
+                WhatsApp
+              </Button>
+              <Button 
+                onClick={handleCallClick}
+                className="inline-flex items-center gap-4 px-10 py-8 bg-transparent hover:bg-transparent text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+                  <Phone className="w-7 h-7 text-blue-500" />
+                </div>
+                <div className="flex flex-col items-start">
+                  <span className="text-sm text-gray-300 font-medium">CALL US NOW</span>
+                  <span className="text-xl font-bold text-white">07305 967999</span>
+                </div>
+              </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="card-service bg-black text-white border-white/20" id="contact-form">
+            <div className="text-center mb-6">
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-2">
+                GET A FREE QUOTE.
+              </h2>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="name" className="text-white font-semibold">Name</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    required
+                    className="mt-2 rounded-xl border-2"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="phone" className="text-white font-semibold">Phone</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    required
+                    className="mt-2 rounded-xl border-2"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="email" className="text-white font-semibold">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                  required
+                  className="mt-2 rounded-xl border-2"
+                />
+              </div>
+
+
+              <div>
+                <Label htmlFor="message" className="text-white font-semibold">Message</Label>
+                <Textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
+                  placeholder="Tell us about your groundworks and landscaping needs..."
+                  className="mt-2 rounded-xl border-2 min-h-[100px]"
+                />
+              </div>
+
+           <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition-colors duration-200">
+             SEND
+           </Button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
