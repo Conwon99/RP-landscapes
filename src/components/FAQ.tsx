@@ -16,32 +16,40 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "How much does decking installation cost?",
-      answer: "Decking installation costs vary depending on the size, material choice, and complexity of the project. Composite decking typically starts from £80-120 per square meter, while wooden decking ranges from £60-100 per square meter. We provide free, no-obligation quotes for all decking work. Contact us for a detailed quote."
+      question: "What groundworks services do you provide?",
+      answer: "We provide comprehensive groundworks services including site preparation, drainage systems, foundation work, and excavation services. Our groundworks form the foundation for all our landscaping projects, ensuring proper preparation for monoblocking, artificial grass, brickwork, fencing, and decking installations."
     },
     {
-      question: "Do you install both composite and wooden decking?",
-      answer: "Yes, we specialize in both composite and wooden decking installation. Composite decking offers low maintenance and weather resistance, while wooden decking provides natural beauty and traditional appeal. Our skilled joiners can help you choose the best option for your needs."
+      question: "How much does monoblocking cost?",
+      answer: "Monoblocking costs vary depending on the size, design complexity, and material choice. Prices typically range from £40-80 per square meter for standard installations. We provide free, no-obligation quotes for all monoblocking work including driveways, patios, and pathways."
     },
     {
       question: "What areas do you cover?",
       answer: "We provide groundworks and landscaping services across Glasgow and Ayrshire, including surrounding areas. Contact us to confirm coverage for your specific location and discuss your project requirements."
     },
     {
+      question: "Do you install artificial grass?",
+      answer: "Yes, we specialize in high-quality artificial grass installation and maintenance. Our artificial grass solutions offer low maintenance, year-round green appearance, and realistic looks. We handle everything from ground preparation to professional installation with proper drainage systems."
+    },
+    {
+      question: "What brickwork services do you offer?",
+      answer: "We provide expert brickwork and masonry services including walls, retaining walls, repairs, and custom designs. Our skilled bricklayers work with various materials and can create both functional and decorative brickwork solutions for your property."
+    },
+    {
       question: "Do you offer fencing installation and repairs?",
-      answer: "Yes, we provide comprehensive fencing services including new installations, repairs, and maintenance. We work with various fencing materials and can handle everything from privacy fences to decorative fencing. All work is completed to the highest standards by our expert contractors."
+      answer: "Yes, we provide comprehensive fencing services including new installations, repairs, and maintenance. We work with various fencing materials and can handle everything from privacy fences to security fencing. All work is completed to the highest standards by our expert contractors."
     },
     {
-      question: "What types of custom outdoor structures do you build?",
-      answer: "We offer a wide range of custom outdoor structures including pergolas, outdoor storage, gates, and bespoke decking solutions. Our skilled contractors can create custom solutions tailored to your specific needs and outdoor design."
+      question: "Do you install both composite and wooden decking?",
+      answer: "Yes, we specialize in both composite and wooden decking installation. Composite decking offers low maintenance and weather resistance, while wooden decking provides natural beauty and traditional appeal. Our skilled contractors can help you choose the best option for your needs."
     },
     {
-      question: "How long does a typical decking project take?",
-      answer: "Project duration depends on size and complexity. Simple decking installations typically take 1-3 days, while larger or more complex projects may take up to a week. We provide realistic timelines during the quote process and keep you updated throughout the project."
+      question: "How long does a typical project take?",
+      answer: "Project duration depends on size and complexity. Simple installations like fencing or artificial grass typically take 1-2 days, while larger groundworks or comprehensive landscaping projects may take up to a week. We provide realistic timelines during the quote process and keep you updated throughout the project."
     },
     {
       question: "Do you offer free quotes?",
-      answer: "Yes, we provide completely free, no-obligation quotes for all our services. You can request a quote by calling 07495 295903, emailing us, or using our contact form. We'll assess your needs and provide a detailed, transparent quote with no hidden costs."
+      answer: "Yes, we provide completely free, no-obligation quotes for all our services. You can request a quote by calling 07305 967999, emailing us at RPBuildandlandscapeslimited@gmail.com, or using our contact form. We'll assess your needs and provide a detailed, transparent quote with no hidden costs."
     }
   ];
 
@@ -73,7 +81,7 @@ const FAQ = () => {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-[hsl(var(--asphalt-grey))] max-w-3xl mx-auto">
-              Common questions about our decking, fencing, and custom outdoor structure services across Scotland
+              Common questions about our groundworks, landscaping, monoblocking, artificial grass, brickwork, fencing, and decking services across Glasgow and Ayrshire
             </p>
           </div>
 
@@ -111,11 +119,11 @@ const FAQ = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+447495295903"
+                href="tel:+447305967999"
                 onClick={() => trackPhoneCall('faq_section')}
                 className="inline-flex items-center justify-center px-6 py-3 bg-[hsl(var(--primary-blue))] text-white rounded-full font-semibold hover:bg-[hsl(var(--primary-blue))]/90 transition-colors"
               >
-                Call 07495 295903
+                Call 07305 967999
               </a>
               <button
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}

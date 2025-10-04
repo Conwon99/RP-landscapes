@@ -99,11 +99,12 @@ const Hero = () => {
           className="w-full h-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
       </div>
       
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="flex justify-start">
+          <div className="max-w-4xl">
           {/* Text Content */}
           <div className="text-left space-y-8">
             <div className="space-y-6">
@@ -132,7 +133,7 @@ const Hero = () => {
 
             {/* Quick Contact */}
             <div className="pt-4 border-t border-white/20">
-              <p className="text-white text-lg font-semibold mb-3">Give us a call or a Whatsapp for a free quote</p>
+              <p className="text-white text-lg font-semibold mb-3">Give us a call or a Whatsapp for a <span className="font-bold text-green-400">FREE QUOTE</span></p>
               <div className="flex flex-col sm:flex-row gap-4 w-full">
               <Button 
                 onClick={handleMessengerClick}
@@ -156,67 +157,6 @@ const Hero = () => {
               </div>
             </div>
           </div>
-
-          {/* Contact Form */}
-          <div className="card-service bg-black text-white border-white/20" id="contact-form">
-            <div className="text-center mb-6">
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-2">
-                GET A FREE QUOTE.
-              </h2>
-            </div>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="name" className="text-white font-semibold">Name</Label>
-                  <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    required
-                    className="mt-2 rounded-xl border-2"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="phone" className="text-white font-semibold">Phone</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                    required
-                    className="mt-2 rounded-xl border-2"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <Label htmlFor="email" className="text-white font-semibold">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  required
-                  className="mt-2 rounded-xl border-2"
-                />
-              </div>
-
-
-              <div>
-                <Label htmlFor="message" className="text-white font-semibold">Message</Label>
-                <Textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                  placeholder="Tell us about your groundworks and landscaping needs..."
-                  className="mt-2 rounded-xl border-2 min-h-[100px]"
-                />
-              </div>
-
-           <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition-colors duration-200">
-             SEND
-           </Button>
-            </form>
           </div>
         </div>
       </div>

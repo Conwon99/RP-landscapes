@@ -89,7 +89,7 @@ const ServicesGrid = () => {
                 <LazyImage
                   src={service.image}
                   alt={`Professional ${service.title.toLowerCase()} service - expert groundworks and landscaping solutions`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
                   fallbackSrc={service.fallbackImage}
                 />
               </div>

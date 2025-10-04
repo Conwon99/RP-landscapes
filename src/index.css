@@ -172,6 +172,27 @@ All colors MUST be HSL.
     @apply bg-card rounded-3xl p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] 
            transition-[var(--transition-smooth)] hover:scale-[1.02];
   }
+
+  /* Ensure LazyImage inside service cards truly fills and centers */
+  .service-card-img {
+    position: relative;
+  }
+  .service-card-img picture,
+  .service-card-img img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block;
+  }
+  .service-card-img img {
+    transition: transform 300ms ease;
+  }
+  .group:hover .service-card-img img {
+    transform: scale(1.05);
+  }
   
   .trust-badge {
     @apply bg-[hsl(var(--trust-bg))] text-[hsl(var(--trust-foreground))] px-4 py-2 rounded-full 

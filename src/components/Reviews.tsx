@@ -3,25 +3,25 @@ import { Star, ArrowRight } from "lucide-react";
 const Reviews = () => {
   const reviews = [
     {
-      name: "Jenna Kelly",
+      name: "Kris Nimbley",
       location: "Glasgow",
       rating: 5,
-      text: "Delighted with the decking Ryan & team did for us. From first visit to quote, to completion, the communication was excellent and happy with the price. Would highly recommend!",
-      service: "Decking Installation"
+      text: "Robert laid two lengths of slabs for me for my driveway. Quick and friendly service and did exactly as was asked. Very happy and good quality workmanship. Would certainly come back to Robert again in the future.",
+      service: "Monoblocking"
     },
     {
-      name: "Holland Lisa",
-      location: "Edinburgh",
+      name: "Ellen Fairbairn",
+      location: "Ayrshire",
       rating: 5,
-      text: "Had Ryan and the guys out last week to remove my old fence and put up a new one. The guys worked really hard and honestly can't fault them ☺️ Will definitely use them again and recommend them to others. I'm delighted with the finished result and has made a huge difference! Thanks so much! ⭐️⭐️⭐️⭐️⭐️",
+      text: "This is the second time I have asked this company to replace a border fence on my property. Two parts now match up and meet perfectly. Could not ask for better service. Job completed as quoted. I cannot recommend them enough for their hard work and finishing. Thanks boys!!!",
       service: "Fencing Installation"
     },
     {
-      name: "Dee DDocherty",
-      location: "Stirling",
+      name: "Wilma Jamieson",
+      location: "Glasgow",
       rating: 5,
-      text: "Clyde Decking were absolutely amazing! Professional from start to finish, great quotes and genuinely went above and beyond to get our fence replaced providing advice and guidance as to what would be best for replacement. Highly recommend!",
-      service: "Fence Repairs"
+      text: "Fantastic job replacing sleepers on raised bed. Very quick and efficient. Highly recommend.",
+      service: "Garden Landscaping"
     }
   ];
 

@@ -4,11 +4,11 @@ const TrustBar = () => {
   const trustItems = [
     {
       icon: MapPin,
-      text: "Scotland Central Belt"
+      text: "Glasgow & Ayrshire"
     },
     {
       icon: Shield,
-      text: "Expert Joiners"
+      text: "Fully Insured"
     },
     {
       icon: Phone,
@@ -16,7 +16,7 @@ const TrustBar = () => {
     },
     {
       icon: Star,
-      text: "5★ Recommended"
+      text: "5★ Reviews"
     }
   ];
 
